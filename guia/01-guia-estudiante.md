@@ -1,6 +1,6 @@
-# Sesión 13: Documentación y control de versiones (guía de laboratorio)
+# Sesión 9: Documentación y control de versiones (guía de laboratorio)
 
-**Curso:** Prototipado y Manufactura de Productos Mecatrónicos · **Duración:** 2 horas · **Modalidad:** individual
+**Curso:** 1MTR68 · Prototipado y Manufactura de Productos Mecatrónicos · **Duración:** 2 horas · **Modalidad:** individual
 
 > **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener la carpeta `~/proyectos/curso` con el material del curso.
 
@@ -119,7 +119,7 @@ git log --oneline
 
 1. En GitHub: botón **+** (arriba a la derecha) → **New repository**.
 2. **Repository name:** `demogit`
-3. **Description:** `Nodo LoRa - Sesión 13`
+3. **Description:** `Nodo LoRa - 1MTR68 Sesión 9`
 4. **Public** (para que el docente pueda revisarlo).
 5. ⚠️ **NO marques** *Add a README*, *.gitignore* ni *license*. El repositorio debe crearse **vacío**.
 6. **Create repository**.

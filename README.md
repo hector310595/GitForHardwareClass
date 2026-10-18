@@ -1,6 +1,6 @@
 # Sesión 9: Documentación y control de versiones
 
-**Prototipado y Manufactura de Productos Mecatrónicos** · Git + GitHub para proyectos de hardware en KiCad · 2 horas
+**1MTR68 · Prototipado y Manufactura de Productos Mecatrónicos** · Git + GitHub para proyectos de hardware en KiCad · 2 horas
 
 ## Cómo usar este material
 

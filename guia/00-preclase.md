@@ -1,4 +1,6 @@
-# Antes de la sesión 13: checklist de preparación
+# Antes de la sesión 9: checklist de preparación
+
+**1MTR68 · Prototipado y Manufactura de Productos Mecatrónicos**
 
 ⏱️ **Tiempo estimado: 30 minutos.** Hazlo **antes** de la clase. Si llegas sin esto, pierdes la primera media hora de la sesión instalando.
 

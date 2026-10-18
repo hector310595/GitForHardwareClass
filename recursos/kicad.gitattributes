@@ -1,4 +1,4 @@
-# .gitattributes para proyectos KiCad (sesión 13)
+# .gitattributes para proyectos KiCad (1MTR68, sesión 9)
 #
 # KiCad guarda sus diseños como TEXTO. En Windows a veces se escriben con
 # finales de línea CRLF y en macOS/Linux con LF. Sin esta regla, cuando alguien
