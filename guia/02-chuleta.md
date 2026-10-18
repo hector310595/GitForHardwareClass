@@ -2,7 +2,7 @@
 
 ## Configuración (una vez por computadora)
 
-```bash
+```powershell
 git config --global user.name "Tu Nombre"
 git config --global user.email "tu-correo@pucp.edu.pe"
 git config --global init.defaultBranch main
@@ -11,7 +11,7 @@ git config --global core.editor "code --wait"
 
 ## ¿Dónde estoy?
 
-```bash
+```powershell
 pwd                              # carpeta actual
 ls                               # qué hay aquí
 cd demogit                       # entrar a una carpeta
@@ -22,7 +22,7 @@ open .                           # macOS: abrir esta carpeta en Finder
 
 ## El ciclo diario
 
-```bash
+```powershell
 git status                         # ¿qué cambió? (úsalo TODO el tiempo)
 git diff                           # ver los cambios línea por línea
 git add DemoGit.kicad_sch          # preparar un archivo
@@ -35,7 +35,7 @@ git log --oneline --graph          # ver el historial
 
 ## Empezar un proyecto
 
-```bash
+```powershell
 git init                                              # proyecto nuevo
 git remote add origin https://github.com/USUARIO/REPO.git
 git push -u origin main                               # primer push
@@ -45,7 +45,7 @@ git clone https://github.com/USUARIO/REPO.git         # o copiar uno existente
 
 ## Ramas
 
-```bash
+```powershell
 git branch                       # listar ramas (* = actual)
 git switch -c feat/nombre        # crear una rama y cambiarse a ella
 git switch main                  # cambiar de rama (¡cierra KiCad antes!)
@@ -56,7 +56,7 @@ git branch -d feat/nombre        # borrar una rama ya integrada
 
 ## Deshacer
 
-```bash
+```powershell
 git restore archivo              # descartar cambios SIN commit de un archivo
 git restore --staged archivo     # sacar del staging (no pierde cambios)
 git rm -r --cached carpeta       # dejar de rastrear (ej. si olvidaste el .gitignore)
@@ -65,7 +65,7 @@ git revert <hash>                # nuevo commit que deshace otro (seguro)
 
 ## Conflictos
 
-```bash
+```powershell
 git checkout --ours archivo      # quedarse con MI versión (rama actual)
 git checkout --theirs archivo    # quedarse con la versión que estoy integrando
 git add archivo

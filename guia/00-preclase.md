@@ -25,11 +25,10 @@ Instálalos **antes que Git**: el instalador de Git te preguntará qué editor u
 
 ### Windows
 
-Descarga **Git for Windows** de <https://git-scm.com/download/win>. El instalador tiene muchas pantallas: en casi todas basta con **Next**, pero **revisa estas tres**:
+Descarga **Git for Windows** de <https://git-scm.com/download/win>. El instalador tiene muchas pantallas: en casi todas basta con **Next**, pero **revisa estas dos**:
 
 | Pantalla del instalador | Qué elegir | Por qué |
 |---|---|---|
-| *Select Components* | Deja marcado *Windows Explorer integration → Open Git Bash here* y **marca** *Add a Git Bash Profile to Windows Terminal* | Para abrir Git Bash con clic derecho o desde la app Terminal |
 | *Choosing the default editor used by Git* | **Use Visual Studio Code as Git's default editor** | El editor por defecto es Vim: si Git lo abre, es muy difícil salir |
 | *Adjusting the name of the initial branch in new repositories* | **Override the default branch name for new repositories** → `main` | Así tu rama principal se llama igual que en GitHub |
 
@@ -47,14 +46,10 @@ Abre la app **Terminal** y escribe `git --version`. Si no está instalado, macOS
 
 ### ¿Qué terminal uso?
 
-- **Windows:** recomendamos **Git Bash** (los comandos son iguales a los de macOS/Linux). Los comandos de las guías **también funcionan en PowerShell**, así que si abriste PowerShell sin querer no pasa nada.
-- **macOS / Linux:** la app **Terminal**.
+- **Windows: PowerShell.** Es la terminal que trae Windows. Para abrirla **en una carpeta**: entra a la carpeta en el Explorador → clic derecho en un espacio vacío → **Abrir en Terminal**. (En Windows 10: `Shift` + clic derecho → *Abrir la ventana de PowerShell aquí*.)
+- **macOS / Linux:** la app **Terminal**. Los comandos de las guías son los mismos.
 
-> **Abrir Git Bash en una carpeta (Windows):** clic derecho dentro de la carpeta → *Open Git Bash here* (en Windows 11: *Mostrar más opciones* → *Open Git Bash here*).
->
-> **¿Usas clic derecho → *Abrir en Terminal*?** En Windows 11 eso abre PowerShell. Para que abra Git Bash: abre *Terminal* → flecha **⌄** junto a la pestaña → **Configuración** → **Inicio** → **Perfil predeterminado** → **Git Bash** → **Guardar**. Si Git Bash no aparece en la lista, vuelve a ejecutar el instalador de Git y marca *Add a Git Bash Profile to Windows Terminal*.
->
-> **¿Cómo sé en cuál estoy?** PowerShell muestra `PS C:\...>`. Git Bash muestra `usuario@PC MINGW64 ~` y debajo un `$`.
+> **¿Dónde estoy?** PowerShell siempre te lo muestra al inicio de la línea: `PS D:\Proyectos>` significa que estás en `D:\Proyectos`.
 
 ## 4. Configura la autenticación con GitHub
 
@@ -62,7 +57,7 @@ GitHub ya no acepta tu contraseña desde la terminal. Hay que configurar un mét
 
 - **Windows:** no hagas nada. Git for Windows trae el *Git Credential Manager*: la primera vez que hagas `git push` se abrirá el navegador para que inicies sesión en GitHub.
 - **macOS / Linux:** instala la herramienta de GitHub (`gh`) y úsala para autenticarte:
-  ```bash
+  ```sh
   # macOS (necesitas Homebrew: https://brew.sh)
   brew install gh
   # Ubuntu/Debian: ver https://github.com/cli/cli/blob/trunk/docs/install_linux.md
@@ -75,7 +70,7 @@ GitHub ya no acepta tu contraseña desde la terminal. Hay que configurar un mét
 
 Abre la terminal y copia **los cuatro** comandos, **cambiando nombre y correo**. Hazlo aunque ya hayas elegido VS Code y `main` en el instalador: si tenías Git instalado de antes, puede haber quedado otra configuración.
 
-```bash
+```powershell
 git config --global user.name "Juan Pérez"
 git config --global user.email "tu-correo@pucp.edu.pe"
 git config --global init.defaultBranch main
@@ -90,7 +85,7 @@ git config --global core.editor "code --wait"
 
 Verifica preguntándole a Git cada valor:
 
-```bash
+```powershell
 git config user.name
 git config user.email
 git config init.defaultBranch
@@ -107,30 +102,30 @@ Todo lo de la sesión vivirá en **una carpeta de trabajo**: ahí estarán el ma
 
 **Opción A (recomendada): la carpeta `proyectos` en tu usuario.** Abre la terminal en cualquier lugar y escribe:
 
-```bash
+```powershell
 mkdir -p ~/proyectos
 cd ~/proyectos
 ```
 
-`~` significa **tu carpeta de usuario** (en Windows, `C:\Users\TU_USUARIO`; en macOS, `/Users/TU_USUARIO`). Estos comandos te llevan a `~/proyectos` **aunque hayas abierto la terminal en otra carpeta**.
+`~` significa **tu carpeta de usuario** (en Windows, `C:\Users\TU_USUARIO`; en macOS, `/Users/TU_USUARIO`). Si `mkdir` muestra un error rojo *"already exists"*, la carpeta ya existía: no pasa nada. Estos comandos te llevan a `~/proyectos` **aunque hayas abierto la terminal en otra carpeta**.
 
-**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos`). Ábrela en el Explorador, clic derecho → *Open Git Bash here* (o *Abrir en Terminal*). **No** escribas los comandos de la opción A: ya estás donde debes.
+**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos`). Ábrela en el Explorador, clic derecho → **Abrir en Terminal**. **No** escribas los comandos de la opción A: ya estás donde debes.
 
-> Para ir a esa carpeta escribiendo: en PowerShell `cd D:\Proyectos`; en Git Bash las unidades se escriben distinto: `cd /d/Proyectos`.
+> También puedes llegar escribiendo: `cd D:\Proyectos`.
 
 Sea cual sea tu opción, comprueba dónde estás:
 
-```bash
+```powershell
 pwd
 ```
 
-🔍 Debe mostrar tu carpeta de trabajo (por ejemplo `/c/Users/jperez/proyectos` en Git Bash, o `C:\Users\jperez\proyectos` en PowerShell). **Anótala**: en clase empezarás siempre desde ahí.
+🔍 Debe mostrar tu carpeta de trabajo (por ejemplo `C:\Users\jperez\proyectos` o `D:\Proyectos`). **Anótala**: en clase empezarás siempre desde ahí.
 
 ## 7. ✅ Prueba final
 
 Desde tu carpeta de trabajo:
 
-```bash
+```powershell
 git --version
 git clone https://github.com/hector310595/GitForHardwareClass.git 1MTR68
 ls 1MTR68
@@ -155,7 +150,7 @@ Si llegaste aquí: **estás listo para la sesión.** 🎉
 | Síntoma | Solución |
 |---------|----------|
 | `git: command not found` / *"git no se reconoce"* | Cierra y vuelve a abrir la terminal: las terminales abiertas antes de instalar Git no lo ven. |
-| `1MTR68` se creó en otra carpeta (clonaste desde un lugar distinto a tu carpeta de trabajo) | Abre la terminal en tu carpeta de trabajo, comprueba con `pwd` y vuelve a clonar ahí (paso 7). Luego borra la copia equivocada: en PowerShell `Remove-Item -Recurse -Force RUTA\1MTR68`, en Git Bash `rm -rf RUTA/1MTR68`. |
+| `1MTR68` se creó en otra carpeta (clonaste desde un lugar distinto a tu carpeta de trabajo) | Abre la terminal en tu carpeta de trabajo, comprueba con `pwd` y vuelve a clonar ahí (paso 7). Luego borra la copia equivocada: `Remove-Item -Recurse -Force RUTA\1MTR68` (en macOS: `rm -rf RUTA/1MTR68`). |
 | `code: command not found` | En VS Code: `Ctrl/Cmd+Shift+P` → *Shell Command: Install 'code' command in PATH*. En Windows reinstala VS Code marcando "Add to PATH". |
 | No encuentro mi carpeta en el Explorador | Escribe `explorer .` (con el punto): abre en el Explorador la carpeta donde estás. |
 | Al hacer commit se abrió una pantalla negra con `~` a la izquierda (Vim) | No elegiste VS Code como editor | Escribe `:q!` y Enter para salir; luego haz el paso 5 |

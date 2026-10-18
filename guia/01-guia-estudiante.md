@@ -4,7 +4,7 @@
 
 > **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `1MTR68/` adentro.
 >
-> En Windows recomendamos **Git Bash**, pero todos los comandos de esta guía también funcionan en **PowerShell**.
+> En Windows usamos **PowerShell** (clic derecho en la carpeta → *Abrir en Terminal*). En macOS, la app **Terminal**: los comandos son los mismos.
 
 ## Qué vas a lograr hoy
 
@@ -46,18 +46,18 @@ Un **commit** es una *foto* del proyecto con una descripción de qué cambió y 
 Abre la terminal **en tu carpeta de trabajo** (la que elegiste en la preclase, paso 6):
 
 - Si usaste la opción A: `cd ~/proyectos`
-- Si usaste la opción B: clic derecho en tu carpeta → *Open Git Bash here* (o *Abrir en Terminal*)
+- Si usaste la opción B: clic derecho en tu carpeta → *Abrir en Terminal*
 
 Comprueba que estás en el lugar correcto:
 
-```bash
+```powershell
 pwd
 ls
 ```
 
 🔍 **Checkpoint:** `ls` muestra la carpeta `1MTR68`. Si no aparece, no estás en tu carpeta de trabajo: no sigas.
 
-```bash
+```powershell
 cp -r 1MTR68/inicio/DemoGit demogit
 cd demogit
 ls
@@ -67,7 +67,7 @@ ls
 
 ### 1.2 Inicializa Git
 
-```bash
+```powershell
 git init
 git status
 ```
@@ -90,7 +90,7 @@ Nada de eso es parte del **diseño**. Si lo subes, cada compañero tendrá confl
 
 ### 1.4 Agrega `.gitignore`, `.gitattributes` y la plantilla de Pull Request
 
-```bash
+```powershell
 cp ../1MTR68/recursos/kicad.gitignore .gitignore
 cp ../1MTR68/recursos/kicad.gitattributes .gitattributes
 mkdir -p .github
@@ -116,14 +116,14 @@ sym-lib-table
 
 ### 1.5 Agrega los archivos al staging y haz tu primer commit
 
-```bash
+```powershell
 git add .
 git status
 ```
 
 🔍 **Checkpoint:** ahora los archivos están en **verde** (*Changes to be committed*).
 
-```bash
+```powershell
 git commit -m "chore: importa proyecto DemoGit inicial"
 git log --oneline
 ```
@@ -143,7 +143,7 @@ git log --oneline
 
 ### 1.7 Conecta tu repositorio local con GitHub y sube
 
-```bash
+```powershell
 git remote add origin https://github.com/TU_USUARIO/demogit.git
 git remote -v
 git push -u origin main
@@ -205,7 +205,7 @@ gitGraph
 
 ### 2.1 Crea la rama
 
-```bash
+```powershell
 git switch -c feat/eink-display
 git branch
 ```
@@ -216,7 +216,7 @@ git branch
 
 ### 2.2 Agrega la librería de símbolos (primer commit de la rama)
 
-```bash
+```powershell
 cp -r ../1MTR68/recursos/Library .
 ```
 
@@ -230,7 +230,7 @@ Ahora en KiCad:
 
 Vuelve a la terminal:
 
-```bash
+```powershell
 git status
 git diff sym-lib-table
 ```
@@ -241,7 +241,7 @@ git diff sym-lib-table
 
 > 💡 **KiCad 10 trae Git integrado.** En el gestor de proyectos verás el nombre de la rama junto al proyecto y el estado de cada archivo. Es el **mismo** repositorio que manejas desde la terminal: no inicialices otro desde KiCad. Hoy usamos la terminal porque así entiendes lo que pasa por debajo, y los comandos sirven con cualquier programa.
 
-```bash
+```powershell
 git add Library sym-lib-table
 git commit -m "feat(lib): agrega librería de símbolos E_Ink_Display"
 ```
@@ -254,7 +254,7 @@ git commit -m "feat(lib): agrega librería de símbolos E_Ink_Display"
 4. *(Opcional)* Conecta sus pines SPI con **etiquetas** (`CLK`, `COPI`) a las mismas redes del MCU.
 5. **Guarda** con `Ctrl+S` / `Cmd+S`.
 
-```bash
+```powershell
 git status
 git diff --stat
 git add DemoGit.kicad_sch
@@ -268,7 +268,7 @@ git log --oneline
 
 ### 2.4 Sube la rama a GitHub
 
-```bash
+```powershell
 git push -u origin feat/eink-display
 ```
 
@@ -276,13 +276,13 @@ git push -u origin feat/eink-display
 
 > ⚠️ **Cierra KiCad antes de cambiar de rama.** KiCad no recarga los archivos si cambian por debajo, y podrías sobrescribir tu trabajo al guardar.
 
-```bash
+```powershell
 git switch main
 ```
 
 Abre el esquemático: **el display desapareció** y la carpeta `Library/` tampoco está. Cierra KiCad.
 
-```bash
+```powershell
 git switch feat/eink-display
 ```
 
@@ -311,7 +311,7 @@ git switch feat/eink-display
 
 En la terminal:
 
-```bash
+```powershell
 git switch main
 git pull
 git log --oneline --graph
@@ -325,7 +325,7 @@ git log --oneline --graph
 
 ### 3.1 README en su propia rama
 
-```bash
+```powershell
 git switch -c docs/readme
 cp ../1MTR68/recursos/README_plantilla.md README.md
 code README.md
@@ -340,7 +340,7 @@ Completa **todos los `TODO`**:
 
 Para ver la vista previa en VS Code: `Ctrl/Cmd+Shift+V`. El diagrama Mermaid solo se dibujará en GitHub.
 
-```bash
+```powershell
 git add README.md
 git commit -m "docs: agrega README con diagrama de bloques"
 git push -u origin docs/readme
@@ -348,7 +348,7 @@ git push -u origin docs/readme
 
 Abre el PR en GitHub, revisa en **Files changed** → *Display the rich diff* (ícono de documento) cómo se verá, y haz **merge**. Después:
 
-```bash
+```powershell
 git switch main
 git pull
 ```
@@ -357,7 +357,7 @@ git pull
 
 1. En KiCad, abre el esquemático → **Archivo → Trazar** (*Plot*) → formato **PDF** → carpeta de salida `production/` → **Trazar**.
 2. Comprueba en la terminal que Git **ignora** la carpeta `production/`:
-   ```bash
+   ```powershell
    git status
    ```
    🔍 Debe decir `nothing to commit, working tree clean`.
@@ -402,27 +402,27 @@ Si no terminaste en clase, termínalo en casa: las instrucciones de arriba sirve
 
 Para quienes terminan antes. Los **conflictos** ocurren cuando dos ramas modifican **la misma línea**.
 
-```bash
+```powershell
 git switch -c fix/r2-4k7
 ```
 
 En KiCad, cambia el valor de **R2** de `10k` a `4.7k`, guarda y cierra KiCad.
 
-```bash
+```powershell
 git commit -am "fix(bom): cambia R2 a 4.7k"
 git switch main
 ```
 
 En KiCad, cambia **el mismo R2** a `1k`, guarda y cierra KiCad.
 
-```bash
+```powershell
 git commit -am "fix(bom): cambia R2 a 1k"
 git merge fix/r2-4k7
 ```
 
 🔍 Verás `CONFLICT (content): Merge conflict in DemoGit.kicad_sch`. (Si también aparece conflicto en `DemoGit.kicad_pro`, resuélvelo igual que abajo.) Busca el conflicto:
 
-```bash
+```powershell
 git grep -n -A4 "<<<<<<<" -- DemoGit.kicad_sch
 ```
 
@@ -436,7 +436,7 @@ DemoGit.kicad_sch-4894->>>>>>> fix/r2-4k7
 
 Resuélvelo eligiendo **una** versión completa del archivo:
 
-```bash
+```powershell
 git checkout --theirs DemoGit.kicad_sch   # quedarse con la de la rama (4.7k)
 # o:  git checkout --ours DemoGit.kicad_sch   (quedarse con la de main, 1k)
 git add DemoGit.kicad_sch
