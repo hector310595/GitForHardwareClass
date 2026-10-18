@@ -73,7 +73,7 @@ GitHub ya no acepta tu contraseña desde la terminal. Hay que configurar un mét
 
 ## 5. Configura Git (una sola vez por computadora)
 
-Abre la terminal y copia estos comandos **cambiando nombre y correo**. Si en el instalador de Windows ya elegiste VS Code y `main`, los dos últimos no cambian nada, pero tampoco hacen daño:
+Abre la terminal y copia **los cuatro** comandos, **cambiando nombre y correo**. Hazlo aunque ya hayas elegido VS Code y `main` en el instalador: si tenías Git instalado de antes, puede haber quedado otra configuración.
 
 ```bash
 git config --global user.name "Juan Pérez"
@@ -88,11 +88,18 @@ git config --global core.editor "code --wait"
 | `init.defaultBranch main` | La rama principal se llamará `main`, igual que en GitHub. |
 | `core.editor "code --wait"` | Si Git necesita que escribas un mensaje, abrirá VS Code (y no *vim*, del que es difícil salir). |
 
-Verifica:
+Verifica preguntándole a Git cada valor:
 
 ```bash
-git config --global --list
+git config user.name
+git config user.email
+git config init.defaultBranch
+git config core.editor
 ```
+
+🔍 **Debe responder:** tu nombre, tu correo, `main`, y `code --wait` (o la ruta de VS Code, por ejemplo `"C:\...\Code.exe" --wait`, si lo elegiste en el instalador).
+
+> ⚠️ No uses `git config --global --list` para verificar: en Windows, lo que eliges en el instalador se guarda en la configuración **del sistema**, así que esa lista no lo muestra. Si `init.defaultBranch` responde `master`, vuelve a ejecutar `git config --global init.defaultBranch main`.
 
 ## 6. Elige tu carpeta de trabajo
 
