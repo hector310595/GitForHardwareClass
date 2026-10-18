@@ -25,6 +25,10 @@ Al final de esta guía hay una **prueba final**. Si la pasa, estás listo.
 > 💡 **En clase siempre usaremos una terminal:** *Git Bash* en Windows, *Terminal* en macOS/Linux. Todos los comandos de las guías funcionan igual en ambas.
 >
 > ⚠️ **Windows: usa Git Bash, no PowerShell ni CMD.** Algunos comandos de la guía (`ls -a`, `cp -r`, `mkdir -p`) no funcionan igual en PowerShell. Para abrir Git Bash: menú Inicio → escribe *Git Bash*, o clic derecho dentro de una carpeta → *Open Git Bash here* (en Windows 11: *Mostrar más opciones* → *Open Git Bash here*).
+>
+> **¿Usas clic derecho → *Abrir en Terminal*?** En Windows 11 eso abre PowerShell por defecto. Cámbialo una sola vez: abre *Terminal* → flecha **⌄** junto a la pestaña → **Configuración** → **Inicio** → **Perfil predeterminado** → **Git Bash** → **Guardar**. Si Git Bash no aparece en la lista, reinstala Git for Windows marcando *Add a Git Bash Profile to Windows Terminal*.
+>
+> **¿Cómo sé en cuál estoy?** PowerShell muestra `PS C:\...>`. Git Bash muestra `usuario@PC MINGW64 ~` y debajo un `$`.
 
 ## 3. Instala KiCad 10 y un editor de texto
 

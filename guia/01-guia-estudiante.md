@@ -4,7 +4,7 @@
 
 > **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `curso/` adentro.
 >
-> En Windows usa siempre **Git Bash** (no PowerShell ni CMD).
+> En Windows usa siempre **Git Bash** (no PowerShell ni CMD). Si tu terminal muestra `PS C:\...>`, estás en PowerShell: ver preclase, paso 2.
 
 ## Qué vas a lograr hoy
 
