@@ -2,7 +2,9 @@
 
 **Curso:** 1MTR68 · Prototipado y Manufactura de Productos Mecatrónicos · **Duración:** 2 horas · **Modalidad:** individual
 
-> **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener la carpeta `~/proyectos/curso` con el material del curso.
+> **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `curso/` adentro.
+>
+> En Windows usa siempre **Git Bash** (no PowerShell ni CMD).
 
 ## Qué vas a lograr hoy
 
@@ -41,8 +43,21 @@ Un **commit** es una *foto* del proyecto con una descripción de qué cambió y 
 
 ### 1.1 Prepara la carpeta del proyecto
 
+Abre la terminal **en tu carpeta de trabajo** (la que elegiste en la preclase, paso 6):
+
+- Si usaste la opción A: `cd ~/proyectos`
+- Si usaste la opción B: clic derecho en tu carpeta → *Open Git Bash here*
+
+Comprueba que estás en el lugar correcto:
+
 ```bash
-cd ~/proyectos
+pwd
+ls
+```
+
+🔍 **Checkpoint:** `ls` muestra la carpeta `curso`. Si no aparece, no estás en tu carpeta de trabajo: no sigas.
+
+```bash
 cp -r curso/inicio/DemoGit demogit
 cd demogit
 ls -a
@@ -438,7 +453,9 @@ Abre el esquemático y confirma el valor.
 
 | Síntoma | Causa | Solución |
 |---------|-------|----------|
-| `fatal: not a git repository` | No estás en la carpeta del proyecto | `cd ~/proyectos/demogit` |
+| `fatal: not a git repository` | No estás en la carpeta del proyecto | Ve a tu carpeta de trabajo y luego `cd demogit`. Usa `pwd` para saber dónde estás |
+| `cp: cannot stat 'curso/inicio/DemoGit'` | No estás en tu carpeta de trabajo (la que contiene `curso/`) | `pwd` y `ls`; ve a la carpeta donde está `curso` |
+| Errores raros con `ls -a`, `cp -r` o `mkdir -p` en Windows | Estás en PowerShell o CMD | Cierra y abre **Git Bash** |
 | `error: src refspec main does not match any` | Aún no hiciste ningún commit, o tu rama se llama `master` | Haz el commit (1.5) o `git branch -m main` |
 | `! [rejected] ... (fetch first)` | Creaste el repo en GitHub **con** README | `git pull origin main --allow-unrelated-histories`, luego `git push` |
 | `remote origin already exists` | Ya agregaste el remoto | `git remote set-url origin https://github.com/TU_USUARIO/demogit.git` |

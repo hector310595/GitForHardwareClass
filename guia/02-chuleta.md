@@ -9,6 +9,17 @@ git config --global init.defaultBranch main
 git config --global core.editor "code --wait"
 ```
 
+## ¿Dónde estoy?
+
+```bash
+pwd                              # carpeta actual
+ls                               # qué hay aquí
+cd demogit                       # entrar a una carpeta
+cd ..                            # subir un nivel
+explorer .                       # Windows: abrir esta carpeta en el Explorador
+open .                           # macOS: abrir esta carpeta en Finder
+```
+
 ## El ciclo diario
 
 ```bash
