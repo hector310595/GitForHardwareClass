@@ -455,11 +455,11 @@ git grep -n -A4 "<<<<<<<" -- DemoGit.kicad_sch
 ```
 
 ```
-DemoGit.kicad_sch:4890:<<<<<<< HEAD
-DemoGit.kicad_sch-4891-		(property "Value" "1k"
-DemoGit.kicad_sch-4892-=======
-DemoGit.kicad_sch-4893-		(property "Value" "4.7k"
-DemoGit.kicad_sch-4894->>>>>>> fix/r2-4k7
+DemoGit.kicad_sch:5206:<<<<<<< HEAD
+DemoGit.kicad_sch-5207-		(property "Value" "1k"
+DemoGit.kicad_sch-5208-=======
+DemoGit.kicad_sch-5209-		(property "Value" "4.7k"
+DemoGit.kicad_sch-5210->>>>>>> fix/r2-4k7
 ```
 
 Resuélvelo eligiendo **una** versión completa del archivo:
