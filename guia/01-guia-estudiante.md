@@ -57,11 +57,26 @@ ls
 
 🔍 **Checkpoint:** `ls` muestra la carpeta `1MTR68`. Si no aparece, no estás en tu carpeta de trabajo: no sigas.
 
+Ahora copia la plantilla del proyecto a **tu propia carpeta** `demogit`:
+
 ```powershell
 cp -r 1MTR68/inicio/DemoGit demogit
 cd demogit
 ls
 ```
+
+Tu carpeta de trabajo queda así:
+
+```
+D:\Proyectos\               ← tu carpeta de trabajo
+├── 1MTR68\                 ← material del curso: NO se toca, solo se consulta
+│   ├── guia\
+│   ├── inicio\DemoGit\      ← plantilla original
+│   └── recursos\
+└── demogit\                ← TU proyecto: aquí trabajas desde ahora
+```
+
+💡 **Por qué una copia:** `1MTR68` ya es un repositorio Git (el del curso). Tu proyecto debe ser un repositorio **propio**, separado. Si arruinas algo, borras `demogit` y vuelves a copiar la plantilla.
 
 🔍 **Checkpoint:** ves `DemoGit.kicad_pro`, `DemoGit.kicad_sch`, `DemoGit.kicad_pcb`, `DemoGit.kicad_prl`, `fp-info-cache`, `sym-lib-table` y la carpeta `DemoGit-backups`.
 
@@ -120,6 +135,8 @@ sym-lib-table
 git add .
 git status
 ```
+
+> En Windows es normal ver avisos como `warning: in the working copy of 'DemoGit.kicad_sch', CRLF will be replaced by LF...`. Es el `.gitattributes` del paso 1.4 haciendo su trabajo: **no es un error**, sigue adelante.
 
 🔍 **Checkpoint:** ahora los archivos están en **verde** (*Changes to be committed*).
 
@@ -222,9 +239,9 @@ cp -r ../1MTR68/recursos/Library .
 
 Ahora en KiCad:
 
-1. Abre `DemoGit.kicad_pro`.
-2. **Preferencias → Gestionar librerías de símbolos…** (*Manage Symbol Libraries*).
-3. Pestaña **Librerías específicas del proyecto** (*Project Specific Libraries*).
+1. **File → Open Project…** → abre `DemoGit.kicad_pro` **de tu carpeta `demogit`**. ⚠️ No lo abras desde *Recent Projects* sin mirar la ruta: el de `1MTR68\inicio\DemoGit` se llama igual.
+2. **Preferences → Manage Symbol Libraries…**
+3. Pestaña **Project Specific Libraries**.
 4. Clic en el ícono de **carpeta** (*Add existing library*) → selecciona `Library/E_Ink_Display.kicad_sym` → **OK**.
 5. Revisa que la ruta diga `${KIPRJMOD}/Library/E_Ink_Display.kicad_sym`. Si muestra una ruta absoluta (`C:\Users\...`), corrígela a mano: con ruta absoluta el proyecto solo abre en **tu** PC.
 
@@ -248,9 +265,9 @@ git commit -m "feat(lib): agrega librería de símbolos E_Ink_Display"
 
 ### 2.3 Agrega el display al esquemático (segundo commit)
 
-1. Abre el **esquemático**.
-2. Tecla **A** (*Add symbol*) → busca `E_ink` → colócalo en un espacio libre.
-3. Asígnale la referencia **U4** (tecla **E** sobre el símbolo).
+1. Abre el **Schematic Editor**.
+2. Tecla **A** (*Add Symbol*) → busca `E_ink` → colócalo en un espacio libre, por ejemplo debajo del bloque *Microcontroller*.
+3. Asígnale la referencia **U4** (tecla **E** sobre el símbolo → *Symbol Properties*).
 4. *(Opcional)* Conecta sus pines SPI con **etiquetas** (`CLK`, `COPI`) a las mismas redes del MCU.
 5. **Guarda** con `Ctrl+S` / `Cmd+S`.
 
@@ -294,6 +311,8 @@ git switch feat/eink-display
 
 1. En GitHub verás un aviso amarillo **"feat/eink-display had recent pushes"** → **Compare & pull request**. Si no aparece: pestaña **Pull requests → New pull request** → *base: `main`* ← *compare: `feat/eink-display`*.
 2. El cuerpo del PR ya trae **la plantilla** que copiaste en el paso 1.4. Complétala: qué cambia, por qué, tipo de cambio y checklist.
+
+   💡 **¿Cómo apareció sola?** GitHub busca el archivo `.github/pull_request_template.md` en la rama principal y lo usa como texto inicial de cada PR. No hay que configurar nada más: la estructura del repositorio también es documentación.
 3. **Create pull request**.
 
 ### 2.7 Revisa tu propio PR como lo haría un revisor
@@ -317,7 +336,16 @@ git pull
 git log --oneline --graph
 ```
 
+> Al hacer `git switch main` verás `Your branch is up to date with 'origin/main'`, y aun así `git pull` traerá cambios. No es contradictorio: Git compara con lo último que **descargó** de GitHub, y el merge ocurrió en GitHub después.
+
 🔍 **Checkpoint:** tu `main` local ahora incluye los commits del display y el merge del PR.
+
+Limpia la rama que ya integraste (en GitHub ya la borraste; esto la borra de tu PC):
+
+```powershell
+git branch -d feat/eink-display
+git fetch --prune
+```
 
 ---
 
@@ -355,7 +383,7 @@ git pull
 
 ### 3.2 Release v0.1.0 para fabricación
 
-1. En KiCad, abre el esquemático → **Archivo → Trazar** (*Plot*) → formato **PDF** → carpeta de salida `production/` → **Trazar**.
+1. En KiCad, abre el esquemático → **File → Plot…** → *Output Format*: **PDF** → *Output directory*: `production/` → **Plot All Pages**. Cierra KiCad **sin guardar**.
 2. Comprueba en la terminal que Git **ignora** la carpeta `production/`:
    ```powershell
    git status

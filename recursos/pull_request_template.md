@@ -16,7 +16,7 @@
 ## Checklist de revisión
 
 - [ ] El esquemático abre sin errores en KiCad
-- [ ] Corrí el ERC (Inspeccionar → Electrical Rules Checker) y no hay errores nuevos
+- [ ] Corrí el ERC (*Inspect → Electrical Rules Checker*) y no hay errores nuevos
 - [ ] Los componentes nuevos tienen referencia (U4, R3…) y valor
 - [ ] No subí archivos generados (backups, `fp-info-cache`, `.kicad_prl`, gerbers)
 - [ ] Los mensajes de commit siguen el formato `tipo(alcance): descripción`
