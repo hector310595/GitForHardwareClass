@@ -1,4 +1,4 @@
-# Sesión 13: Documentación y control de versiones
+# Sesión 9: Documentación y control de versiones
 
 **Prototipado y Manufactura de Productos Mecatrónicos** · Git + GitHub para proyectos de hardware en KiCad · 2 horas
 
