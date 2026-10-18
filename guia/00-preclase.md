@@ -19,7 +19,7 @@ Al final de esta guía hay una **prueba final**. Si la pasa, estás listo.
 Instálalos **antes que Git**: el instalador de Git te preguntará qué editor usar y VS Code ya debe estar en tu PC.
 
 - **Visual Studio Code** (para editar el README y los mensajes de Git): <https://code.visualstudio.com/>. En Windows, deja marcada la opción **"Agregar a PATH"** (*Add to PATH*), que viene marcada por defecto.
-- **KiCad 10** (la última versión 10.0.x): <https://www.kicad.org/download/>. Si tienes KiCad 9 instalado, puedes conservarlo: las versiones conviven sin problema.
+- **KiCad 10** (la última versión 10.0.x): <https://www.kicad.org/download/>. 
 
 ## 3. Instala Git
 
