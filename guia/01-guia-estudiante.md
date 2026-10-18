@@ -4,7 +4,7 @@
 
 > **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `curso/` adentro.
 >
-> En Windows usa siempre **Git Bash** (no PowerShell ni CMD). Si tu terminal muestra `PS C:\...>`, estás en PowerShell: ver preclase, paso 2.
+> En Windows recomendamos **Git Bash**, pero todos los comandos de esta guía también funcionan en **PowerShell**.
 
 ## Qué vas a lograr hoy
 
@@ -46,7 +46,7 @@ Un **commit** es una *foto* del proyecto con una descripción de qué cambió y 
 Abre la terminal **en tu carpeta de trabajo** (la que elegiste en la preclase, paso 6):
 
 - Si usaste la opción A: `cd ~/proyectos`
-- Si usaste la opción B: clic derecho en tu carpeta → *Open Git Bash here*
+- Si usaste la opción B: clic derecho en tu carpeta → *Open Git Bash here* (o *Abrir en Terminal*)
 
 Comprueba que estás en el lugar correcto:
 
@@ -60,7 +60,7 @@ ls
 ```bash
 cp -r curso/inicio/DemoGit demogit
 cd demogit
-ls -a
+ls
 ```
 
 🔍 **Checkpoint:** ves `DemoGit.kicad_pro`, `DemoGit.kicad_sch`, `DemoGit.kicad_pcb`, `DemoGit.kicad_prl`, `fp-info-cache`, `sym-lib-table` y la carpeta `DemoGit-backups`.
@@ -423,15 +423,15 @@ git merge fix/r2-4k7
 🔍 Verás `CONFLICT (content): Merge conflict in DemoGit.kicad_sch`. (Si también aparece conflicto en `DemoGit.kicad_pro`, resuélvelo igual que abajo.) Busca el conflicto:
 
 ```bash
-grep -n -A6 "<<<<<<<" DemoGit.kicad_sch
+git grep -n -A4 "<<<<<<<" -- DemoGit.kicad_sch
 ```
 
 ```
-<<<<<<< HEAD
-		(property "Value" "1k"
-=======
-		(property "Value" "4.7k"
->>>>>>> fix/r2-4k7
+DemoGit.kicad_sch:4890:<<<<<<< HEAD
+DemoGit.kicad_sch-4891-		(property "Value" "1k"
+DemoGit.kicad_sch-4892-=======
+DemoGit.kicad_sch-4893-		(property "Value" "4.7k"
+DemoGit.kicad_sch-4894->>>>>>> fix/r2-4k7
 ```
 
 Resuélvelo eligiendo **una** versión completa del archivo:
@@ -455,7 +455,8 @@ Abre el esquemático y confirma el valor.
 |---------|-------|----------|
 | `fatal: not a git repository` | No estás en la carpeta del proyecto | Ve a tu carpeta de trabajo y luego `cd demogit`. Usa `pwd` para saber dónde estás |
 | `cp: cannot stat 'curso/inicio/DemoGit'` | No estás en tu carpeta de trabajo (la que contiene `curso/`) | `pwd` y `ls`; ve a la carpeta donde está `curso` |
-| Errores raros con `ls -a`, `cp -r` o `mkdir -p` en Windows | Estás en PowerShell o CMD | Cierra y abre **Git Bash** |
+| `mkdir` muestra un error en rojo *"already exists"* (PowerShell) | La carpeta ya existía | Nada, puedes seguir |
+| Se abrió VS Code con un archivo `COMMIT_EDITMSG` o `MERGE_MSG` | Git te pide un mensaje (olvidaste `-m`, o es un merge) | Escribe el mensaje en la primera línea, guarda (`Ctrl+S`) y **cierra la pestaña**: la terminal continúa |
 | `error: src refspec main does not match any` | Aún no hiciste ningún commit, o tu rama se llama `master` | Haz el commit (1.5) o `git branch -m main` |
 | `! [rejected] ... (fetch first)` | Creaste el repo en GitHub **con** README | `git pull origin main --allow-unrelated-histories`, luego `git push` |
 | `remote origin already exists` | Ya agregaste el remoto | `git remote set-url origin https://github.com/TU_USUARIO/demogit.git` |

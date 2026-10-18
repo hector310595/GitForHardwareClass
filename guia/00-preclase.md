@@ -14,26 +14,47 @@ Al final de esta guía hay una **prueba final**. Si la pasa, estás listo.
 2. Elige un nombre de usuario profesional (lo verán futuros empleadores): `jperez-mecatronica` mejor que `xXgamer99Xx`.
 3. Verifica tu correo.
 
-## 2. Instala Git
+## 2. Instala VS Code y KiCad 10
 
-| Sistema | Qué hacer |
-|---------|-----------|
-| **Windows** | Descarga **Git for Windows** de <https://git-scm.com/download/win> e instálalo con las opciones por defecto. Esto instala también **Git Bash**, la terminal que usaremos en clase. |
-| **macOS** | Abre la app **Terminal** y escribe `git --version`. Si no está instalado, macOS te ofrecerá instalar las "Command Line Developer Tools": acepta. |
-| **Linux** | `sudo apt install git` (Ubuntu/Debian) o el equivalente de tu distribución. |
+Instálalos **antes que Git**: el instalador de Git te preguntará qué editor usar y VS Code ya debe estar en tu PC.
 
-> 💡 **En clase siempre usaremos una terminal:** *Git Bash* en Windows, *Terminal* en macOS/Linux. Todos los comandos de las guías funcionan igual en ambas.
+- **Visual Studio Code** (para editar el README y los mensajes de Git): <https://code.visualstudio.com/>. En Windows, deja marcada la opción **"Agregar a PATH"** (*Add to PATH*), que viene marcada por defecto.
+- **KiCad 10** (la última versión 10.0.x): <https://www.kicad.org/download/>. Si tienes KiCad 9 instalado, puedes conservarlo: las versiones conviven sin problema.
+
+## 3. Instala Git
+
+### Windows
+
+Descarga **Git for Windows** de <https://git-scm.com/download/win>. El instalador tiene muchas pantallas: en casi todas basta con **Next**, pero **revisa estas tres**:
+
+| Pantalla del instalador | Qué elegir | Por qué |
+|---|---|---|
+| *Select Components* | Deja marcado *Windows Explorer integration → Open Git Bash here* y **marca** *Add a Git Bash Profile to Windows Terminal* | Para abrir Git Bash con clic derecho o desde la app Terminal |
+| *Choosing the default editor used by Git* | **Use Visual Studio Code as Git's default editor** | El editor por defecto es Vim: si Git lo abre, es muy difícil salir |
+| *Adjusting the name of the initial branch in new repositories* | **Override the default branch name for new repositories** → `main` | Así tu rama principal se llama igual que en GitHub |
+
+En el resto deja la opción por defecto. En especial, **no cambies** *Adjusting your PATH environment* (deja la opción *Recommended*) ni *Choose a credential helper* (deja **Git Credential Manager**: es lo que te permite iniciar sesión en GitHub desde el navegador).
+
+> ¿Ya tenías Git instalado? Puedes volver a ejecutar el instalador encima para cambiar estas opciones, o simplemente hacer el paso 5 (configura lo mismo con comandos).
+
+### macOS
+
+Abre la app **Terminal** y escribe `git --version`. Si no está instalado, macOS te ofrecerá instalar las *Command Line Developer Tools*: acepta.
+
+### Linux
+
+`sudo apt install git` (Ubuntu/Debian) o el equivalente de tu distribución.
+
+### ¿Qué terminal uso?
+
+- **Windows:** recomendamos **Git Bash** (los comandos son iguales a los de macOS/Linux). Los comandos de las guías **también funcionan en PowerShell**, así que si abriste PowerShell sin querer no pasa nada.
+- **macOS / Linux:** la app **Terminal**.
+
+> **Abrir Git Bash en una carpeta (Windows):** clic derecho dentro de la carpeta → *Open Git Bash here* (en Windows 11: *Mostrar más opciones* → *Open Git Bash here*).
 >
-> ⚠️ **Windows: usa Git Bash, no PowerShell ni CMD.** Algunos comandos de la guía (`ls -a`, `cp -r`, `mkdir -p`) no funcionan igual en PowerShell. Para abrir Git Bash: menú Inicio → escribe *Git Bash*, o clic derecho dentro de una carpeta → *Open Git Bash here* (en Windows 11: *Mostrar más opciones* → *Open Git Bash here*).
->
-> **¿Usas clic derecho → *Abrir en Terminal*?** En Windows 11 eso abre PowerShell por defecto. Cámbialo una sola vez: abre *Terminal* → flecha **⌄** junto a la pestaña → **Configuración** → **Inicio** → **Perfil predeterminado** → **Git Bash** → **Guardar**. Si Git Bash no aparece en la lista, reinstala Git for Windows marcando *Add a Git Bash Profile to Windows Terminal*.
+> **¿Usas clic derecho → *Abrir en Terminal*?** En Windows 11 eso abre PowerShell. Para que abra Git Bash: abre *Terminal* → flecha **⌄** junto a la pestaña → **Configuración** → **Inicio** → **Perfil predeterminado** → **Git Bash** → **Guardar**. Si Git Bash no aparece en la lista, vuelve a ejecutar el instalador de Git y marca *Add a Git Bash Profile to Windows Terminal*.
 >
 > **¿Cómo sé en cuál estoy?** PowerShell muestra `PS C:\...>`. Git Bash muestra `usuario@PC MINGW64 ~` y debajo un `$`.
-
-## 3. Instala KiCad 10 y un editor de texto
-
-- **KiCad 10** (la última versión 10.0.x): <https://www.kicad.org/download/>. Si tienes KiCad 9 instalado, puedes conservarlo: las versiones conviven sin problema.
-- **Visual Studio Code** (para editar el README): <https://code.visualstudio.com/>
 
 ## 4. Configura la autenticación con GitHub
 
@@ -52,7 +73,7 @@ GitHub ya no acepta tu contraseña desde la terminal. Hay que configurar un mét
 
 ## 5. Configura Git (una sola vez por computadora)
 
-Abre la terminal y copia estos comandos **cambiando nombre y correo**:
+Abre la terminal y copia estos comandos **cambiando nombre y correo**. Si en el instalador de Windows ya elegiste VS Code y `main`, los dos últimos no cambian nada, pero tampoco hacen daño:
 
 ```bash
 git config --global user.name "Juan Pérez"
@@ -86,9 +107,9 @@ cd ~/proyectos
 
 `~` significa **tu carpeta de usuario** (en Windows, `C:\Users\TU_USUARIO`; en macOS, `/Users/TU_USUARIO`). Estos comandos te llevan a `~/proyectos` **aunque hayas abierto la terminal en otra carpeta**.
 
-**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos\1MTR68`). Ábrela en el Explorador, clic derecho → *Open Git Bash here*. **No** escribas los comandos de la opción A: ya estás donde debes.
+**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos\1MTR68`). Ábrela en el Explorador, clic derecho → *Open Git Bash here* (o *Abrir en Terminal*). **No** escribas los comandos de la opción A: ya estás donde debes.
 
-> En Git Bash las unidades se escriben distinto: `D:\Proyectos\1MTR68` es `/d/Proyectos/1MTR68`. Para ir ahí: `cd /d/Proyectos/1MTR68`.
+> Para ir a esa carpeta escribiendo: en PowerShell `cd D:\Proyectos\1MTR68`; en Git Bash las unidades se escriben distinto: `cd /d/Proyectos/1MTR68`.
 
 Sea cual sea tu opción, comprueba dónde estás:
 
@@ -96,7 +117,7 @@ Sea cual sea tu opción, comprueba dónde estás:
 pwd
 ```
 
-🔍 Debe mostrar tu carpeta de trabajo (por ejemplo `/c/Users/jperez/proyectos` o `/d/Proyectos/1MTR68`). **Anótala**: en clase empezarás siempre desde ahí.
+🔍 Debe mostrar tu carpeta de trabajo (por ejemplo `/c/Users/jperez/proyectos` en Git Bash, o `C:\Users\jperez\proyectos` en PowerShell). **Anótala**: en clase empezarás siempre desde ahí.
 
 ## 7. ✅ Prueba final
 
@@ -126,10 +147,11 @@ Si llegaste aquí: **estás listo para la sesión.** 🎉
 
 | Síntoma | Solución |
 |---------|----------|
-| `git: command not found` | Cierra y vuelve a abrir la terminal. En Windows asegúrate de abrir **Git Bash**, no CMD ni PowerShell. |
+| `git: command not found` / *"git no se reconoce"* | Cierra y vuelve a abrir la terminal: las terminales abiertas antes de instalar Git no lo ven. |
 | `curso` se creó en otra carpeta | Clonaste desde una carpeta distinta a tu carpeta de trabajo. Muévela: `mv RUTA/curso .` desde tu carpeta de trabajo, o vuelve a clonar ahí. Usa `pwd` para saber dónde estás. |
 | `code: command not found` | En VS Code: `Ctrl/Cmd+Shift+P` → *Shell Command: Install 'code' command in PATH*. En Windows reinstala VS Code marcando "Add to PATH". |
-| No encuentro mi carpeta en el Explorador | Desde Git Bash escribe `explorer .` (con el punto): abre en el Explorador la carpeta donde estás. |
+| No encuentro mi carpeta en el Explorador | Escribe `explorer .` (con el punto): abre en el Explorador la carpeta donde estás. |
+| Al hacer commit se abrió una pantalla negra con `~` a la izquierda (Vim) | No elegiste VS Code como editor | Escribe `:q!` y Enter para salir; luego haz el paso 5 |
 | `gh auth login` falla | Usa la opción de pegar un *token*: GitHub → Settings → Developer settings → Personal access tokens. |
 
 Si nada funciona, escribe al docente **antes** de la clase con una captura del error.
