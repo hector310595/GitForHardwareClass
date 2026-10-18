@@ -2,7 +2,7 @@
 
 **Curso:** 1MTR68 · Prototipado y Manufactura de Productos Mecatrónicos · **Duración:** 2 horas · **Modalidad:** individual
 
-> **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `curso/` adentro.
+> **Requisito:** haber completado [00-preclase.md](00-preclase.md). Debes tener tu **carpeta de trabajo** con la carpeta `1MTR68/` adentro.
 >
 > En Windows recomendamos **Git Bash**, pero todos los comandos de esta guía también funcionan en **PowerShell**.
 
@@ -55,10 +55,10 @@ pwd
 ls
 ```
 
-🔍 **Checkpoint:** `ls` muestra la carpeta `curso`. Si no aparece, no estás en tu carpeta de trabajo: no sigas.
+🔍 **Checkpoint:** `ls` muestra la carpeta `1MTR68`. Si no aparece, no estás en tu carpeta de trabajo: no sigas.
 
 ```bash
-cp -r curso/inicio/DemoGit demogit
+cp -r 1MTR68/inicio/DemoGit demogit
 cd demogit
 ls
 ```
@@ -91,10 +91,10 @@ Nada de eso es parte del **diseño**. Si lo subes, cada compañero tendrá confl
 ### 1.4 Agrega `.gitignore`, `.gitattributes` y la plantilla de Pull Request
 
 ```bash
-cp ../curso/recursos/kicad.gitignore .gitignore
-cp ../curso/recursos/kicad.gitattributes .gitattributes
+cp ../1MTR68/recursos/kicad.gitignore .gitignore
+cp ../1MTR68/recursos/kicad.gitattributes .gitattributes
 mkdir -p .github
-cp ../curso/recursos/pull_request_template.md .github/
+cp ../1MTR68/recursos/pull_request_template.md .github/
 git status
 ```
 
@@ -217,7 +217,7 @@ git branch
 ### 2.2 Agrega la librería de símbolos (primer commit de la rama)
 
 ```bash
-cp -r ../curso/recursos/Library .
+cp -r ../1MTR68/recursos/Library .
 ```
 
 Ahora en KiCad:
@@ -327,7 +327,7 @@ git log --oneline --graph
 
 ```bash
 git switch -c docs/readme
-cp ../curso/recursos/README_plantilla.md README.md
+cp ../1MTR68/recursos/README_plantilla.md README.md
 code README.md
 ```
 
@@ -454,7 +454,7 @@ Abre el esquemático y confirma el valor.
 | Síntoma | Causa | Solución |
 |---------|-------|----------|
 | `fatal: not a git repository` | No estás en la carpeta del proyecto | Ve a tu carpeta de trabajo y luego `cd demogit`. Usa `pwd` para saber dónde estás |
-| `cp: cannot stat 'curso/inicio/DemoGit'` | No estás en tu carpeta de trabajo (la que contiene `curso/`) | `pwd` y `ls`; ve a la carpeta donde está `curso` |
+| `cp: cannot stat '1MTR68/inicio/DemoGit'` | No estás en tu carpeta de trabajo (la que contiene `1MTR68/`) | `pwd` y `ls`; ve a la carpeta donde está `1MTR68` |
 | `mkdir` muestra un error en rojo *"already exists"* (PowerShell) | La carpeta ya existía | Nada, puedes seguir |
 | Se abrió VS Code con un archivo `COMMIT_EDITMSG` o `MERGE_MSG` | Git te pide un mensaje (olvidaste `-m`, o es un merge) | Escribe el mensaje en la primera línea, guarda (`Ctrl+S`) y **cierra la pestaña**: la terminal continúa |
 | `error: src refspec main does not match any` | Aún no hiciste ningún commit, o tu rama se llama `master` | Haz el commit (1.5) o `git branch -m main` |

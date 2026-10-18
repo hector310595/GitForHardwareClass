@@ -96,7 +96,7 @@ git config --global --list
 
 ## 6. Elige tu carpeta de trabajo
 
-Todo lo de la sesión vivirá en **una carpeta de trabajo**: ahí estarán el material del curso (`curso/`) y tu proyecto (`demogit/`), uno al lado del otro. Elige **una** de estas opciones y úsala siempre:
+Todo lo de la sesión vivirá en **una carpeta de trabajo**: ahí estarán el material del curso (`1MTR68/`) y tu proyecto (`demogit/`), uno al lado del otro. Elige **una** de estas opciones y úsala siempre:
 
 **Opción A (recomendada): la carpeta `proyectos` en tu usuario.** Abre la terminal en cualquier lugar y escribe:
 
@@ -107,9 +107,9 @@ cd ~/proyectos
 
 `~` significa **tu carpeta de usuario** (en Windows, `C:\Users\TU_USUARIO`; en macOS, `/Users/TU_USUARIO`). Estos comandos te llevan a `~/proyectos` **aunque hayas abierto la terminal en otra carpeta**.
 
-**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos\1MTR68`). Ábrela en el Explorador, clic derecho → *Open Git Bash here* (o *Abrir en Terminal*). **No** escribas los comandos de la opción A: ya estás donde debes.
+**Opción B: una carpeta que tú ya tienes** (por ejemplo `D:\Proyectos`). Ábrela en el Explorador, clic derecho → *Open Git Bash here* (o *Abrir en Terminal*). **No** escribas los comandos de la opción A: ya estás donde debes.
 
-> Para ir a esa carpeta escribiendo: en PowerShell `cd D:\Proyectos\1MTR68`; en Git Bash las unidades se escriben distinto: `cd /d/Proyectos/1MTR68`.
+> Para ir a esa carpeta escribiendo: en PowerShell `cd D:\Proyectos`; en Git Bash las unidades se escriben distinto: `cd /d/Proyectos`.
 
 Sea cual sea tu opción, comprueba dónde estás:
 
@@ -125,15 +125,15 @@ Desde tu carpeta de trabajo:
 
 ```bash
 git --version
-git clone https://github.com/hector310595/GitForHardwareClass.git curso
-ls curso
+git clone https://github.com/hector310595/GitForHardwareClass.git 1MTR68
+ls 1MTR68
 ```
 
 **Debes ver** algo como:
 
 ```
 git version 2.4x.x
-Cloning into 'curso'...
+Cloning into '1MTR68'...
 README.md  guia  inicio  recursos
 ```
 
@@ -148,7 +148,7 @@ Si llegaste aquí: **estás listo para la sesión.** 🎉
 | Síntoma | Solución |
 |---------|----------|
 | `git: command not found` / *"git no se reconoce"* | Cierra y vuelve a abrir la terminal: las terminales abiertas antes de instalar Git no lo ven. |
-| `curso` se creó en otra carpeta | Clonaste desde una carpeta distinta a tu carpeta de trabajo. Muévela: `mv RUTA/curso .` desde tu carpeta de trabajo, o vuelve a clonar ahí. Usa `pwd` para saber dónde estás. |
+| `1MTR68` se creó en otra carpeta (clonaste desde un lugar distinto a tu carpeta de trabajo) | Abre la terminal en tu carpeta de trabajo, comprueba con `pwd` y vuelve a clonar ahí (paso 7). Luego borra la copia equivocada: en PowerShell `Remove-Item -Recurse -Force RUTA\1MTR68`, en Git Bash `rm -rf RUTA/1MTR68`. |
 | `code: command not found` | En VS Code: `Ctrl/Cmd+Shift+P` → *Shell Command: Install 'code' command in PATH*. En Windows reinstala VS Code marcando "Add to PATH". |
 | No encuentro mi carpeta en el Explorador | Escribe `explorer .` (con el punto): abre en el Explorador la carpeta donde estás. |
 | Al hacer commit se abrió una pantalla negra con `~` a la izquierda (Vim) | No elegiste VS Code como editor | Escribe `:q!` y Enter para salir; luego haz el paso 5 |
