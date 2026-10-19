@@ -35,6 +35,35 @@ flowchart LR
 | J2 | Conector coaxial | Antena |
 | TODO | TODO: display e-ink | TODO |
 
+## Cálculos de diseño
+
+La resistencia de pull-up del reset (R2) consume, con el botón presionado,
+$I = \frac{V_{CC}}{R_2} = \frac{3.3\,V}{10\,k\Omega} = 0.33\,mA$.
+
+Potencia disipada en el regulador LDO (U1) durante la transmisión LoRa:
+
+$$
+P_{LDO} = (V_{in} - V_{out}) \cdot I = (5\,V - 3.3\,V) \cdot 150\,mA \approx 0.26\,W
+$$
+
+Autonomía estimada con una batería de 1000 mAh y un consumo promedio de 2 mA:
+
+$$
+t = \frac{C_{bat}}{I_{prom}} = \frac{1000\,mAh}{2\,mA} = 500\,h \approx 21\ \text{días}
+$$
+
+## Interfaz SPI del display
+
+![Diagrama de tiempo SPI](docs/spi-eink.svg)
+
+Fuente editable: [`docs/spi-eink.json5`](docs/spi-eink.json5) ([WaveDrom](https://wavedrom.com/))
+
+## Consumo de energía
+
+![Consumo por modo](docs/consumo.svg)
+
+Fuente editable: [`docs/consumo.vl.json`](docs/consumo.vl.json) ([Vega-Lite](https://vega.github.io/vega-lite/)). Valores ilustrativos.
+
 ## Estructura del repositorio
 
 ```
@@ -44,6 +73,7 @@ DemoGit/
 ├── DemoGit.kicad_pcb      # layout
 ├── sym-lib-table          # librerías de símbolos del proyecto
 ├── Library/               # símbolos propios (E_Ink_Display)
+├── docs/                  # diagramas: fuentes (.json5, .json) y SVG exportados
 └── README.md              # este archivo
 ```
 

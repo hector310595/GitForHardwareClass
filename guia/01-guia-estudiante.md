@@ -349,30 +349,72 @@ git fetch --prune
 
 ---
 
-## Ejercicio 3: Documentación y Release (≈ 15 min)
+## Ejercicio 3: Documentación y Release (≈ 20 min)
 
 ### 3.1 README en su propia rama
 
 ```powershell
 git switch -c docs/readme
 cp ../1MTR68/recursos/README_plantilla.md README.md
-code README.md
+cp -r ../1MTR68/recursos/docs .
+code .
 ```
 
-Completa **todos los `TODO`**:
+`code .` abre **toda la carpeta del proyecto** en VS Code. Abre `README.md` y completa **todos los `TODO`**:
 
 - Descripción en 2-3 frases.
 - En el diagrama Mermaid, **agrega el display e-ink** conectado al MCU. Pista: copia la línea del LoRa y adáptala.
 - Fila del display en la tabla de componentes.
 - Tu nombre y usuario.
 
-Para ver la vista previa en VS Code: `Ctrl/Cmd+Shift+V`. El diagrama Mermaid solo se dibujará en GitHub.
+Revisa también las secciones nuevas: **Cálculos de diseño** (ecuaciones escritas entre `$...$` y `$$...$$`), **Interfaz SPI del display** y **Consumo de energía**. Estas dos últimas muestran imágenes que todavía no existen: las generas en el paso 3.2.
+
+Vista previa en VS Code: `Ctrl+Shift+V`. Las ecuaciones se ven sin instalar nada. Para ver también el diagrama Mermaid, instala la extensión **Markdown Preview Mermaid Support** (`Ctrl+Shift+X` → búscala → *Install*).
+
+### 3.2 Diagramas como código: exporta los SVG
+
+La carpeta `docs/` trae la **fuente** de dos diagramas, escrita como texto. GitHub no los dibuja a partir del código, así que hay que **exportarlos como imagen SVG**. La fuente se versiona igual que el esquemático: si mañana cambia una señal, se edita el texto y se vuelve a exportar.
+
+**Diagrama de tiempo SPI (WaveDrom):**
+
+1. En VS Code abre `docs/spi-eink.json5` y copia todo su contenido.
+2. Entra a <https://wavedrom.com/editor.html>, borra el ejemplo y pega tu código: el diagrama aparece al instante.
+3. Menú del editor → **Save as SVG**. Si te pide nombre, ponle `spi-eink.svg`.
+
+**Gráfico de consumo (Vega-Lite):**
+
+1. Abre `docs/consumo.vl.json` y copia todo su contenido.
+2. Entra a <https://vega.github.io/editor/>, verifica arriba que diga **Vega-Lite**, borra el ejemplo y pega tu código.
+3. Botón **Export** (arriba) → descarga en formato **SVG**.
+
+**Mueve los dos archivos a `docs/`**, con los nombres exactos que usa el README. Primero mira cómo se llamaron en tu carpeta de Descargas:
 
 ```powershell
-git add README.md
-git commit -m "docs: agrega README con diagrama de bloques"
+ls $HOME\Downloads\*.svg
+```
+
+Luego muévelos y renómbralos (cambia `NOMBRE` por el que viste):
+
+```powershell
+Move-Item $HOME\Downloads\NOMBRE.svg docs\spi-eink.svg
+Move-Item $HOME\Downloads\NOMBRE.svg docs\consumo.svg
+ls docs
+```
+
+🔍 **Checkpoint:** `docs` contiene `spi-eink.json5`, `spi-eink.svg`, `consumo.vl.json` y `consumo.svg`, y en la vista previa del README ya se ven las dos imágenes.
+
+> En macOS: `mv ~/Downloads/NOMBRE.svg docs/spi-eink.svg`.
+
+### 3.3 Commit, PR y merge
+
+```powershell
+git add README.md docs
+git status
+git commit -m "docs: agrega README con diagramas de bloques, tiempo y consumo"
 git push -u origin docs/readme
 ```
+
+🔍 **Checkpoint:** antes del commit, `git status` muestra en verde `README.md` y los 4 archivos de `docs/`.
 
 Abre el PR en GitHub, revisa en **Files changed** → *Display the rich diff* (ícono de documento) cómo se verá, y haz **merge**. Después:
 
@@ -381,7 +423,7 @@ git switch main
 git pull
 ```
 
-### 3.2 Release v0.1.0 para fabricación
+### 3.4 Release v0.1.0 para fabricación
 
 1. En KiCad, abre el esquemático → **File → Plot…** → *Output Format*: **PDF** → *Output directory*: `production/` → **Plot All Pages**. Cierra KiCad **sin guardar**.
 2. Comprueba en la terminal que Git **ignora** la carpeta `production/`:

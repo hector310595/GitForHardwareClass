@@ -24,5 +24,6 @@ Las mismas guías en PDF: [guia/pdf/](guia/pdf/).
     ├── pull_request_template.md   → se copia a .github/
     ├── README_plantilla.md        → base del README del Ejercicio 3
     ├── Library/                   → símbolo E_Ink_Display (Ejercicio 2)
+    ├── docs/                      → fuentes de diagramas WaveDrom y Vega-Lite (Ejercicio 3)
     └── ejemplo-MTR37B/            → ejemplo de README completo
 ```
